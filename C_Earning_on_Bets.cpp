@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define endl '\n'
+#define ll long long
+#define ld  long double
+#define ios() ios_base:: sync_with_stdio(0);cin.tie(0);
+bool cmp(const pair<int,int> &a,const pair<int,int> &b){
+    if(a.first!=b.first)
+    return (a.first<b.first);
+    else
+     return (a.second>b.second);
+}
+int fact(int n)
+{
+    return (n==1) ? 1: n * fact(n - 1); 
+    // ? :
+}
+const int N=100;
+void solve() {
+    ll n,res=1,sum=0;
+    cin >> n;
+    vector<ll> v(n),ans(n);
+    for(int i=0;i<n;i++) {
+        cin >> v[i];
+        res*=v[i];
+    }
+    for(int i=0;i<n;i++){
+        ans[i]=res/v[i];
+        sum+=ans[i];
+    }
+    for(int i=0;i<n;i++){
+        if(ans[i]*v[i]<=sum){
+            cout << -1 << endl;
+            return;
+        }
+    }
+    for(int i=0;i<n;i++){
+        cout << ans[i] << " ";
+    }
+    cout << endl;
+    
+    
+}
+int main()
+{
+    ios();
+    int  t;
+    cin >> t;
+    while(t--){
+        solve();
+
+    }
+}
